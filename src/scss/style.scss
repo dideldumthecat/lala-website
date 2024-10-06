@@ -1,0 +1,203 @@
+// style.scss
+
+@import "fonts";
+@import "mixins";
+
+// Variables
+$color-black: #000;
+$color-white: #fff;
+$color-grey: #888;
+
+$color-blue: #588ef3;
+$color-green: #b8ec8a;
+$color-orange: #ffc869;
+$color-pink: #f381e2;
+
+$font-main: "Arial", sans-serif;
+$font-heading: "Cathedral Open";
+
+$gap: 30px;
+$gap-big: 40px;
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  font-size: 14px;
+  padding: $gap 0;
+}
+
+header {
+  margin-bottom: $gap;
+
+  nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      list-style: none;
+
+      li {
+        float: left;
+        display: block;
+
+        a {
+          text-decoration: none;
+          color: black;
+          margin-right: 40px;
+        }
+      }
+    }
+
+    .nav-buttons {
+      button {
+        margin-left: 10px;
+        color: $color-white;
+
+        @include background-offset(-5px, 5px, -5px, 5px);
+
+        &::before {
+          background-color: $color-grey;
+        }
+      }
+    }
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap;
+  max-width: 1000px;
+  margin: auto;
+
+  .grid-item {
+    text-align: center;
+    border: 1px solid $color-black;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include background-offset(-5px, 5px, 5px, -5px);
+
+    &.blue {
+      &::before {
+        background-color: $color-blue;
+      }
+      color: $color-white;
+
+      button {
+        color: $color-white;
+        border-color: $color-white;
+      }
+    }
+    &.green {
+      &::before {
+        background-color: $color-green;
+      }
+      color: $color-black;
+    }
+    &.orange {
+      &::before {
+        background-color: $color-orange;
+      }
+      color: $color-black;
+    }
+    &.pink {
+      &::before {
+        background-color: $color-pink;
+      }
+      color: $color-white;
+
+      button {
+        color: $color-white;
+        border-color: $color-white;
+      }
+    }
+
+    &.bg-offset-top-bottom-left {
+      @include background-offset(-10px, 10px, -10px, -10px);
+    }
+
+    &.bg-offset-top-bottom {
+      @include background-offset(-10px, 10px, -10px, 10px);
+    }
+
+    &.bg-offset-top-right-bottom {
+      @include background-offset(-10px, -10px, -10px, 10px);
+    }
+
+    &.bg-offset-left {
+      @include background-offset(10px, 10px, 10px, -10px);
+    }
+
+    &.bg-offset-right {
+      @include background-offset(10px, -10px, 10px, 10px);
+    }
+
+    &.bg-offset-bottom-left {
+      @include background-offset(10px, 10px, -10px, -10px);
+    }
+
+    &.bg-offset-right-bottom {
+      @include background-offset(10px, -10px, -10px, 10px);
+    }
+
+    .heading-container {
+        position: relative;
+        display: inline-block;
+        width: min-content;
+        margin: 0 auto;
+
+        h2 {
+            font-family: "Cathedral Open";
+            font-size: 70px;
+            font-weight: normal;
+            margin-bottom: $gap-big;
+      
+            span.subheading {
+              display: block;
+              font-size: 40%;
+            }
+          }
+    }
+
+    button {
+      width: auto;
+      align-self: flex-start;
+      margin: 0 auto;
+    }
+  }
+
+  .logo {
+    margin-bottom: $gap-big;
+    padding: 20px;
+  }
+}
+
+button {
+  font-size: 14px;
+  background: none;
+  border: 1px solid $color-black;
+  padding: 5px 15px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}

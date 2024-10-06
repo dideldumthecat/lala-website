@@ -1,0 +1,13 @@
+@mixin background-offset($top, $right, $bottom, $left) {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: $top;
+        left: $left;
+        right: $right;
+        bottom: $bottom;
+        z-index: -1;
+    }
+}
