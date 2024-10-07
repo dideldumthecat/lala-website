@@ -93,38 +93,16 @@ header {
     @include background-offset(-5px, 5px, 5px, -5px);
 
     &.blue {
-      &::before {
-        background-color: $color-blue;
-      }
-      color: $color-white;
-
-      button {
-        color: $color-white;
-        border-color: $color-white;
-      }
+      @include tile-colors($color-blue, $color-white);
     }
     &.green {
-      &::before {
-        background-color: $color-green;
-      }
-      color: $color-black;
+      @include tile-colors($color-green, $color-black);
     }
     &.orange {
-      &::before {
-        background-color: $color-orange;
-      }
-      color: $color-black;
+      @include tile-colors($color-orange, $color-black);
     }
     &.pink {
-      &::before {
-        background-color: $color-pink;
-      }
-      color: $color-white;
-
-      button {
-        color: $color-white;
-        border-color: $color-white;
-      }
+      @include tile-colors($color-pink, $color-white);
     }
 
     &.bg-offset-top-bottom-left {
@@ -156,22 +134,22 @@ header {
     }
 
     .heading-container {
-        position: relative;
-        display: inline-block;
-        width: min-content;
-        margin: 0 auto;
+      position: relative;
+      display: inline-block;
+      width: min-content;
+      margin: 0 auto;
 
-        h2 {
-            font-family: "Cathedral Open";
-            font-size: 70px;
-            font-weight: normal;
-            margin-bottom: $gap-big;
-      
-            span.subheading {
-              display: block;
-              font-size: 40%;
-            }
-          }
+      h2 {
+        font-family: "Cathedral Open";
+        font-size: 70px;
+        font-weight: normal;
+        margin-bottom: $gap-big;
+
+        span.subheading {
+          display: block;
+          font-size: 40%;
+        }
+      }
     }
 
     button {
@@ -196,9 +174,9 @@ button {
 }
 
 .align-left {
-    text-align: left;
+  text-align: left;
 }
 
 .align-right {
-    text-align: right;
+  text-align: right;
 }

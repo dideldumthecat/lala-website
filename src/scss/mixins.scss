@@ -11,3 +11,15 @@
         z-index: -1;
     }
 }
+
+@mixin tile-colors($background-color, $color) {
+    &::before {
+        background-color: $background-color;
+      }
+      color: $color;
+
+      button {
+        color: $color;
+        border-color: $color;
+      }
+}
