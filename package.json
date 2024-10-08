@@ -19,5 +19,8 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.79.4"
+  },
+  "dependencies": {
+    "micromodal": "0.4.8"
   }
 }

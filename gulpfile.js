@@ -12,7 +12,10 @@ const paths = {
     scss: './src/scss/**/*.scss',
     css: './dist/css',
     js: './src/js/**/*.js',   // Add JS source path
-    jsDist: './dist/js'       // Destination for compiled JS
+    jsDist: './dist/js',       // Destination for compiled JS
+    jsLibs: {
+        micromodal: './node_modules/micromodal/dist/micromodal.js',
+    },
 };
 
 // Compile SCSS to CSS, compress, and generate source maps
@@ -28,7 +31,11 @@ gulp.task('styles', function () {
 
 // Process JavaScript: concatenate, minify, and generate source maps
 gulp.task('scripts', function () {
-    return gulp.src(paths.js)
+    return gulp.src(
+        [
+            paths.jsLibs.micromodal,
+            paths.js
+        ])
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))         // Concatenate into one file
         .pipe(uglify())                  // Minify the JavaScript
