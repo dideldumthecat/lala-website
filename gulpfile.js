@@ -16,7 +16,23 @@ const paths = {
     jsLibs: {
         micromodal: './node_modules/micromodal/dist/micromodal.js',
     },
+    images: './src/images/**/*',
+    imagesDist: './dist/images',
+    fonts: './src/fonts/**/*',
+    fontsDist: './dist/fonts'
 };
+
+// Task to copy images from src/images to dist/images
+gulp.task('images', function () {
+    return gulp.src(paths.images)
+        .pipe(gulp.dest(paths.imagesDist));
+});
+
+// Copy fonts
+gulp.task('fonts', function () {
+    return gulp.src(paths.fonts)
+        .pipe(gulp.dest(paths.fontsDist));
+});
 
 // Compile SCSS to CSS, compress, and generate source maps
 gulp.task('styles', function () {
@@ -62,4 +78,4 @@ gulp.task('serve', function() {
 });
 
 // Default task (run styles, scripts, and serve)
-gulp.task('default', gulp.series('styles', 'scripts', 'serve'));
+gulp.task('default', gulp.series('images', 'fonts', 'styles', 'scripts', 'serve'));
