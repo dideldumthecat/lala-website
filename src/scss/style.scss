@@ -30,49 +30,17 @@ $gap-big: 40px;
 body {
     font-family: $font-main;
     font-size: 14px;
-    padding: $gap 0;
+    padding-bottom: $gap;
 }
 
 header {
-    margin-bottom: $gap;
+    max-width: 1000px;
+    padding: 20px;
+    text-align: right;
+    margin: 0 auto;
 
-    nav {
-        max-width: 1000px;
-        margin: 0 auto;
-        border: 1px solid black;
-        padding: 10px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        ul {
-            list-style: none;
-
-            li {
-                float: left;
-                display: block;
-
-                a {
-                    text-decoration: none;
-                    color: black;
-                    margin-right: 40px;
-                }
-            }
-        }
-
-        .nav-buttons {
-            button {
-                margin-left: 10px;
-                color: $color-white;
-
-                @include background-offset(-5px, 5px, -5px, 5px);
-
-                &::before {
-                    background-color: $color-grey;
-                }
-            }
-        }
+    img {
+        height: 30px;
     }
 }
 
