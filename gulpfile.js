@@ -19,7 +19,9 @@ const paths = {
     images: './src/images/**/*',
     imagesDist: './dist/images',
     fonts: './src/fonts/**/*',
-    fontsDist: './dist/fonts'
+    fontsDist: './dist/fonts',
+    html: './src/*.html',
+    htmlDist: './dist',
 };
 
 // Task to copy images from src/images to dist/images
@@ -32,6 +34,11 @@ gulp.task('images', function () {
 gulp.task('fonts', function () {
     return gulp.src(paths.fonts)
         .pipe(gulp.dest(paths.fontsDist));
+});
+
+gulp.task('html', function () {
+    return gulp.src(paths.html)
+        .pipe(gulp.dest(paths.htmlDist));
 });
 
 // Compile SCSS to CSS, compress, and generate source maps
@@ -60,25 +67,19 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(paths.jsDist));  // Output to dist/js folder
 });
 
-// Watch SCSS and JS files for changes
-gulp.task('watch', function () {
-    gulp.watch(paths.scss, gulp.series('styles'));
-    gulp.watch(paths.js, gulp.series('scripts'));
-});
-
 // Serve and watch SCSS/JS/HTML
 gulp.task('serve', function() {
     browserSync.init({
-        server: './'
+        server: './dist/'
     });
 
     gulp.watch(paths.scss, gulp.series('styles')).on('change', browserSync.reload);
     gulp.watch(paths.js, gulp.series('scripts')).on('change', browserSync.reload);
-    gulp.watch('*.html').on('change', browserSync.reload);
+    gulp.watch(paths.html, gulp.series('html')).on('change', browserSync.reload);
 });
 
 // Default task (run styles, scripts, and serve)
-gulp.task('default', gulp.series('images', 'fonts', 'styles', 'scripts', 'serve'));
+gulp.task('default', gulp.series('html', 'images', 'fonts', 'styles', 'scripts', 'serve'));
 
 // Production deployment build task (without server)
-gulp.task('build', gulp.series('images', 'fonts', 'styles', 'scripts'));
+gulp.task('build', gulp.series('html', 'images', 'fonts', 'styles', 'scripts'));
