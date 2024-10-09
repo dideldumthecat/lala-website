@@ -25,13 +25,6 @@ jobs:
       - name: Build the project
         run: npx gulp build
 
-        jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
       - name: Enable Debug Mode
         run: |
           echo "Debugging enabled"
