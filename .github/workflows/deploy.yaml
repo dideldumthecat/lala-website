@@ -36,7 +36,7 @@ jobs:
           chmod 600 key.pem
 
           # Use rsync to copy the dist/ folder to the remote server
-          rsync -avz -e "ssh -i key.pem ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH
+          rsync -avz -e "ssh -i key.pem ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH"
 
           # Clean up the SSH key file
           rm key.pem
