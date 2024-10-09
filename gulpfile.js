@@ -63,7 +63,7 @@ gulp.task('scripts', function () {
 // Watch SCSS and JS files for changes
 gulp.task('watch', function () {
     gulp.watch(paths.scss, gulp.series('styles'));
-    gulp.watch(paths.js, gulp.series('scripts')); // Watch JS files
+    gulp.watch(paths.js, gulp.series('scripts'));
 });
 
 // Serve and watch SCSS/JS/HTML
@@ -79,3 +79,6 @@ gulp.task('serve', function() {
 
 // Default task (run styles, scripts, and serve)
 gulp.task('default', gulp.series('images', 'fonts', 'styles', 'scripts', 'serve'));
+
+// Production deployment build task (without server)
+gulp.task('build', gulp.series('images', 'fonts', 'styles', 'scripts'));
