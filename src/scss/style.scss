@@ -126,6 +126,10 @@ header {
             align-self: flex-start;
             margin: 0 auto;
         }
+
+        .modal-content {
+            display: none;
+        }
     }
 
     .logo {
