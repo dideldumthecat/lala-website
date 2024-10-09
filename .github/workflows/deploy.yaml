@@ -27,7 +27,7 @@ jobs:
 
       - name: Add Known Host Key
         run: |
-          echo "$KNOWN_HOST_KEY" >> ~/.ssh/known_hosts
+          echo "$KNOWN_HOST_KEY" > ~/.ssh/known_hosts
         env:
           KNOWN_HOST_KEY: ${{ secrets.KNOWN_HOST_KEY }}
 
