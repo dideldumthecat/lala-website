@@ -25,13 +25,10 @@ jobs:
       - name: Build the project
         run: npx gulp build
 
-      - name: Create .ssh Directory
-        run: mkdir -p ~/.ssh
-
       - name: Add Known Host Key
         run: |
-          echo "$KNOWN_HOST_KEY" > ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
+          echo "$KNOWN_HOST_KEY" > known_hosts
+          chmod 644 known_hosts
         env:
           KNOWN_HOST_KEY: ${{ secrets.KNOWN_HOST_KEY }}
 
@@ -47,7 +44,8 @@ jobs:
           chmod 600 key.pem
 
           # Use rsync to copy the dist/ folder to the remote server
-          rsync -avz -e "ssh -i key.pem" ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH
+          rsync -avz -e "ssh -i key.pem -o UserKnownHostsFile=known_hosts" ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH
 
-          # Clean up the SSH key file
+          # Clean up
           rm key.pem
+          rm known_hosts
