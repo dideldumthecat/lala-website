@@ -30,7 +30,7 @@ $gap-big: 40px;
 body {
     font-family: $font-main;
     font-size: 14px;
-    padding-bottom: $gap;
+    padding: $gap 0 $gap 0;
 }
 
 header {
@@ -125,6 +125,14 @@ header {
             width: auto;
             align-self: flex-start;
             margin: 0 auto;
+        }
+
+        p {
+            img {
+                width: 30px;
+                height: 30px;
+                margin: 30px 10px 0 10px;
+            }
         }
 
         .modal-content {
