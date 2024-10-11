@@ -144,3 +144,19 @@ button {
 .align-right {
     text-align: right;
 }
+
+// For tablets (smaller than 1024px)
+@media (max-width: $breakpoint-tablet) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); // Two columns for tablet
+        max-width: 640px;
+    }
+}
+
+// For mobile (smaller than 768px)
+@media (max-width: $breakpoint-mobile) {
+    .grid-container {
+        grid-template-columns: 1fr; // Single column for mobile
+        max-width: 320px;
+    }
+}
