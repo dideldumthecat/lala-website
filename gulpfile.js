@@ -26,13 +26,13 @@ const paths = {
 
 // Task to copy images from src/images to dist/images
 gulp.task('images', function () {
-    return gulp.src(paths.images)
+    return gulp.src(paths.images, { encoding: false })
         .pipe(gulp.dest(paths.imagesDist));
 });
 
 // Copy fonts
 gulp.task('fonts', function () {
-    return gulp.src(paths.fonts)
+    return gulp.src(paths.fonts, { encoding: false })
         .pipe(gulp.dest(paths.fontsDist));
 });
 
