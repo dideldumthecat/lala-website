@@ -30,11 +30,25 @@ header {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "power essence idea"
+        "develop logo design"
+        "way story future";
     gap: $gap;
     max-width: 1000px;
     margin: auto;
 
     .grid-item {
+        &#power { grid-area: power; }
+        &#essence { grid-area: essence; }
+        &#idea { grid-area: idea; }
+        &#develop { grid-area: develop; }
+        &#logo { grid-area: logo; }
+        &#design { grid-area: design; }
+        &#way { grid-area: way; }
+        &#story { grid-area: story; }
+        &#future { grid-area: future; }
+
         text-align: center;
         border: 1px solid $color-black;
         aspect-ratio: 1 / 1;
@@ -149,6 +163,12 @@ button {
 @media (max-width: $breakpoint-tablet) {
     .grid-container {
         grid-template-columns: repeat(2, 1fr); // Two columns for tablet
+        grid-template-areas:
+            "logo power"
+            "essence idea"
+            "develop design"
+            "way story"
+            "future .";
         max-width: 640px;
     }
 }
@@ -157,6 +177,16 @@ button {
 @media (max-width: $breakpoint-mobile) {
     .grid-container {
         grid-template-columns: 1fr; // Single column for mobile
+        grid-template-areas:
+            "logo"
+            "power"
+            "essence"
+            "idea"
+            "develop"
+            "design"
+            "way"
+            "story"
+            "future";
         max-width: 320px;
     }
 }
