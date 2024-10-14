@@ -39,15 +39,15 @@ header {
     margin: auto;
 
     .grid-item {
-        &#power { grid-area: power; }
-        &#essence { grid-area: essence; }
-        &#idea { grid-area: idea; }
-        &#develop { grid-area: develop; }
+        &#power { grid-area: power; @include background-offset(-10px, 10px, -10px, -10px); }
+        &#essence { grid-area: essence; @include background-offset(-10px, 10px, -10px, 10px); }
+        &#idea { grid-area: idea; @include background-offset(-10px, -10px, -10px, 10px); }
+        &#develop { grid-area: develop; @include background-offset(10px, 10px, 10px, -10px); }
         &#logo { grid-area: logo; }
-        &#design { grid-area: design; }
-        &#way { grid-area: way; }
-        &#story { grid-area: story; }
-        &#future { grid-area: future; }
+        &#design { grid-area: design; @include background-offset(10px, -10px, 10px, 10px); }
+        &#way { grid-area: way; @include background-offset(10px, 10px, -10px, -10px); }
+        &#story { grid-area: story; @include background-offset(-10px, 10px, -10px, 10px); }
+        &#future { grid-area: future; @include background-offset(10px, -10px, -10px, 10px); }
 
         text-align: center;
         border: 1px solid $color-black;
@@ -55,8 +55,6 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-
-        @include background-offset(-5px, 5px, 5px, -5px);
 
         &.blue {
             @include tile-colors($color-blue, $color-white);
@@ -69,34 +67,6 @@ header {
         }
         &.pink {
             @include tile-colors($color-pink, $color-white);
-        }
-
-        &.bg-offset-top-bottom-left {
-            @include background-offset(-10px, 10px, -10px, -10px);
-        }
-
-        &.bg-offset-top-bottom {
-            @include background-offset(-10px, 10px, -10px, 10px);
-        }
-
-        &.bg-offset-top-right-bottom {
-            @include background-offset(-10px, -10px, -10px, 10px);
-        }
-
-        &.bg-offset-left {
-            @include background-offset(10px, 10px, 10px, -10px);
-        }
-
-        &.bg-offset-right {
-            @include background-offset(10px, -10px, 10px, 10px);
-        }
-
-        &.bg-offset-bottom-left {
-            @include background-offset(10px, 10px, -10px, -10px);
-        }
-
-        &.bg-offset-right-bottom {
-            @include background-offset(10px, -10px, -10px, 10px);
         }
 
         .heading-container {
@@ -170,6 +140,11 @@ button {
             "way story"
             "future .";
         max-width: 640px;
+
+        .grid-item {
+            &#power { @include background-offset(-10px, -10px, -10px, 10px); }
+            &#idea, &#way { @include background-offset(-10px, 10px, -10px, 10px); }
+        }
     }
 }
 
@@ -188,5 +163,10 @@ button {
             "story"
             "future";
         max-width: 320px;
+
+        .grid-item {
+            &#power, &#develop, &#story { @include background-offset(10px, -10px, 10px, -10px); }
+            &#idea, &#design, &#future { @include background-offset(10px, -10px, 10px, -10px); }
+        }
     }
 }
