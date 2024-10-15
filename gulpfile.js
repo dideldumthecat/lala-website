@@ -11,8 +11,8 @@ const browserSync = require('browser-sync').create();
 const paths = {
     scss: './src/scss/**/*.scss',
     css: './dist/css',
-    js: './src/js/**/*.js',   // Add JS source path
-    jsDist: './dist/js',       // Destination for compiled JS
+    js: './src/js/**/*.js',
+    jsDist: './dist/js',
     jsLibs: {
         micromodal: './node_modules/micromodal/dist/micromodal.js',
     },
