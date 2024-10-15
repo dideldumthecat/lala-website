@@ -24,18 +24,19 @@ const paths = {
     htmlDist: './dist',
 };
 
-// Task to copy images from src/images to dist/images
+// Copy images (binary mode)
 gulp.task('images', function () {
     return gulp.src(paths.images, { encoding: false })
         .pipe(gulp.dest(paths.imagesDist));
 });
 
-// Copy fonts
+// Copy fonts (binary mode)
 gulp.task('fonts', function () {
     return gulp.src(paths.fonts, { encoding: false })
         .pipe(gulp.dest(paths.fontsDist));
 });
 
+// Copy html
 gulp.task('html', function () {
     return gulp.src(paths.html)
         .pipe(gulp.dest(paths.htmlDist));
