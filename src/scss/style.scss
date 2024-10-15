@@ -55,7 +55,10 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        cursor: pointer;
+
+        &:has(.modal-content) {
+            cursor: pointer;
+        }
 
         &.blue {
             @include tile-colors($color-blue, $color-white);
