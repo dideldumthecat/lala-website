@@ -55,6 +55,7 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        cursor: pointer;
 
         &.blue {
             @include tile-colors($color-blue, $color-white);

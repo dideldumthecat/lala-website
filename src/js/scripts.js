@@ -1,15 +1,14 @@
 MicroModal.init();
 
 document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.grid-item button');
+    const tiles = document.querySelectorAll('.grid-item');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const gridItem = this.closest('.grid-item');
-            const modalContent = gridItem.querySelector('.modal-content');
+    tiles.forEach(tile => {
+        tile.addEventListener('click', function() {
+            const modalContent = tile.querySelector('.modal-content');
 
             if (modalContent) {
-                const modalTitle = gridItem.querySelector('h2') ? gridItem.querySelector('h2').textContent : 'Default Title';
+                const modalTitle = tile.querySelector('h2') ? tile.querySelector('h2').textContent : 'Default Title';
 
                 // Copy the entire .modal-content markup into the modal body
                 const modalBody = document.querySelector('#modal-1-text');
