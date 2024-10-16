@@ -20,7 +20,7 @@ const paths = {
     imagesDist: './dist/images',
     fonts: './src/fonts/**/*',
     fontsDist: './dist/fonts',
-    html: './src/*.html',
+    html: './src/*.*',
     htmlDist: './dist',
 };
 
@@ -36,9 +36,9 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest(paths.fontsDist));
 });
 
-// Copy html
+// Copy index.html and other top-level files
 gulp.task('html', function () {
-    return gulp.src(paths.html)
+    return gulp.src(paths.html, { encoding: false })
         .pipe(gulp.dest(paths.htmlDist));
 });
 
