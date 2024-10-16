@@ -99,6 +99,8 @@ header {
         }
 
         p {
+            line-height: 1.5;
+
             img {
                 width: 30px;
                 height: 30px;
@@ -106,14 +108,14 @@ header {
             }
         }
 
+        .logo {
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
         .modal-content {
             display: none;
         }
-    }
-
-    .logo {
-        margin-bottom: $gap-big;
-        padding: 20px;
     }
 }
 
