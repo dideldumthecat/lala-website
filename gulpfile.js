@@ -6,6 +6,10 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
+const rev = require('gulp-rev');
+const revRewrite = require('gulp-rev-rewrite');
+const revDeleteOriginals = require('gulp-rev-delete-original');
+const del = require('del');
 
 // Paths
 const paths = {
@@ -20,9 +24,14 @@ const paths = {
     imagesDist: './dist/images',
     fonts: './src/fonts/**/*',
     fontsDist: './dist/fonts',
-    html: './src/*.*',
+    html: './src/{*,.*}',
     htmlDist: './dist',
 };
+
+// Clean dist directory
+gulp.task('clean', function () {
+    return del(['./dist/**', '!./dist']);
+});
 
 // Copy images (binary mode)
 gulp.task('images', function () {
@@ -67,6 +76,15 @@ gulp.task('scripts', function () {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.jsDist));
 });
+
+// Revision and thus cache-bust file names
+gulp.task('revision', function () {
+    return gulp.src(['./dist/css/*.css', './dist/js/*.js', './dist/**/*.{svg,png,ico}'], { base: './dist' })
+        .pipe(rev())
+        .pipe(revDeleteOriginals())
+        .pipe(gulp.src('./dist/**/*.html'))
+        .pipe(revRewrite())
+        .pipe(gulp.dest('./dist'));
 });
 
 // Serve and watch SCSS/JS/HTML
@@ -84,4 +102,4 @@ gulp.task('serve', function() {
 gulp.task('default', gulp.series('html', 'images', 'fonts', 'styles', 'scripts', 'serve'));
 
 // Production deployment build task (without server)
-gulp.task('build', gulp.series('html', 'images', 'fonts', 'styles', 'scripts'));
+gulp.task('build', gulp.series('clean', 'html', 'images', 'fonts', 'styles', 'scripts', 'revision'));
