@@ -61,11 +61,12 @@ gulp.task('scripts', function () {
             paths.js
         ])
         .pipe(sourcemaps.init())
-        .pipe(concat('main.js'))         // Concatenate into one file
-        .pipe(uglify())                  // Minify the JavaScript
-        .pipe(rename({ suffix: '.min' })) // Rename to main.min.js
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.jsDist));  // Output to dist/js folder
+        .pipe(gulp.dest(paths.jsDist));
+});
 });
 
 // Serve and watch SCSS/JS/HTML
