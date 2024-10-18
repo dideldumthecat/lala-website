@@ -24,7 +24,7 @@ const paths = {
     imagesDist: './dist/images',
     fonts: './src/fonts/**/*',
     fontsDist: './dist/fonts',
-    html: './src/{*,.*}',
+    html: './src/*.*',
     htmlDist: './dist',
 };
 
