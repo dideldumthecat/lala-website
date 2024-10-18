@@ -1,6 +1,16 @@
 MicroModal.init();
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Prevent tap from being propagated to elements behind the modal
+    const modalOverlay = document.querySelector('.modal__overlay');
+
+    modalOverlay.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+
+    // Fill the modal before opening it with the contents of the tile
     const tiles = document.querySelectorAll('.grid-item:has(.modal-content)');
 
     tiles.forEach(tile => {
