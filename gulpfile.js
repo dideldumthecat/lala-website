@@ -79,7 +79,7 @@ gulp.task('scripts', function () {
 
 // Revision and thus cache-bust file names
 gulp.task('revision', function () {
-    return gulp.src(['./dist/css/*.css', './dist/js/*.js', './dist/**/*.{svg,png,ico}'], { base: './dist' })
+    return gulp.src(['./dist/css/*.css', './dist/js/*.js', './dist/**/*.{svg,png,ico}'], { base: './dist', encoding: false })
         .pipe(rev())
         .pipe(revDeleteOriginals())
         .pipe(gulp.src('./dist/**/*.html'))
