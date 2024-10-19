@@ -44,7 +44,7 @@ jobs:
           chmod 600 key.pem
 
           # Use rsync to copy the dist/ folder to the remote server
-          rsync -avz --delete -e "ssh -i key.pem -o UserKnownHostsFile=known_hosts" ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH
+          rsync -avz --delete --exclude '/fonts' -e "ssh -i key.pem -o UserKnownHostsFile=known_hosts" ./dist/ $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH
 
           # Clean up
           rm key.pem
