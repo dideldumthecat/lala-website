@@ -1,4 +1,7 @@
-MicroModal.init();
+MicroModal.init({
+    disableFocus: true,
+    disableScroll: true,
+});
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -6,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalOverlay = document.querySelector('.modal__overlay');
 
     modalOverlay.addEventListener('touchstart', function(e) {
-        e.preventDefault();
+        if (e.target.hasAttribute('data-micromodal-close')) {
+            e.preventDefault();
+        }
     }, { passive: false });
 
 
