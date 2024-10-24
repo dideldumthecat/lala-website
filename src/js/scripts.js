@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     tiles.forEach(tile => {
         tile.addEventListener('click', function() {
             const modalContent = tile.querySelector('.modal-content');
-            const modalTitle = tile.querySelector('h2') ? tile.querySelector('h2').textContent : 'Default Title';
+            const modalTitle = tile.querySelector('h2')?.textContent || 'Lala';
 
             // Copy the entire .modal-content markup into the modal body
             const modalBody = document.querySelector('#modal-1-text');
