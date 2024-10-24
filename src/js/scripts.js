@@ -1,8 +1,3 @@
-MicroModal.init({
-    disableFocus: true,
-    disableScroll: true,
-});
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const openModal = (tile) => {
@@ -13,7 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modal-1-title').textContent = modalTitle;
         modalBody.innerHTML = modalContent.innerHTML;
 
-        MicroModal.show('modal-1');
+        const modalOptions = {
+            disableFocus: true,
+            disableScroll: true,
+        }
+        MicroModal.show('modal-1', modalOptions);
     }
 
     // Prevent tap from being propagated to elements behind the modal
