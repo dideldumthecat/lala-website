@@ -3,12 +3,12 @@ MicroModal.init({
     disableScroll: true,
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 
     // Prevent tap from being propagated to elements behind the modal
     const modalOverlay = document.querySelector('.modal__overlay');
 
-    modalOverlay.addEventListener('touchstart', function(e) {
+    modalOverlay.addEventListener('touchstart', (e) => {
         if (e.target.hasAttribute('data-micromodal-close')) {
             e.preventDefault();
         }
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tiles = document.querySelectorAll('.grid-item:has(.modal-content)');
 
     tiles.forEach(tile => {
-        tile.addEventListener('click', function() {
+        tile.addEventListener('click', () => {
             const modalContent = tile.querySelector('.modal-content');
             const modalTitle = tile.querySelector('h2')?.textContent || 'Lala';
 
