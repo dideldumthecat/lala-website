@@ -102,6 +102,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Add swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const handleGesture = () => {
+        if (touchEndX < touchStartX) {
+            changeModalContent('next');
+        }
+        if (touchEndX > touchStartX) {
+            changeModalContent('prev');
+        }
+    }
+
+    selectors.modal.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].screenX;
+    });
+
+    selectors.modal.addEventListener('touchend', (event) => {
+        touchEndX = event.changedTouches[0].screenX;
+        handleGesture();
+    });
+
     // Prevent tap from being propagated to elements behind the modal
     selectors.modalOverlay.addEventListener('touchstart', (e) => {
         if (e.target.hasAttribute('data-micromodal-close')) {
