@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const selectors = {
         gridContainer: document.querySelector('.grid-container'),
+        modal: document.getElementById('modal-1'),
         modalOverlay: document.querySelector('.modal__overlay'),
         modalTitle: document.getElementById('modal-1-title'),
         modalText: document.querySelector('#modal-1-text'),
@@ -73,6 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return nextTile;
     }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (event) => {
+        if (selectors.modal.classList.contains('visible')) {
+            if (event.key === 'ArrowLeft') {
+                changeModalContent('prev');
+            } else if (event.key === 'ArrowRight') {
+                changeModalContent('next');
+            }
+        }
+    });
 
     // Prevent tap from being propagated to elements behind the modal
     selectors.modalOverlay.addEventListener('touchstart', (e) => {
