@@ -89,6 +89,18 @@
 
 }
 
+.modal__content {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal__content.fade-out {
+    opacity: 0;
+}
+
+.modal__content.fade-in {
+    opacity: 1;
+}
+
 .hidden {
     display: none;
 }

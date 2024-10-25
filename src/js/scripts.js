@@ -51,11 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (newTile) {
-            setModalContent(newTile);
+            setModalControls(newTile);
 
-            // Update the active tile
-            currentTile.classList.remove('active');
-            newTile.classList.add('active');
+            // Apply fade-out animation
+            selectors.modalContent.classList.add('fade-out');
+
+            // Wait for the fade-out animation to complete
+            setTimeout(() => {
+                setModalContent(newTile);
+
+                selectors.modalContent.classList.remove('fade-out');
+                selectors.modalContent.classList.add('fade-in');
+
+                // Remove the fade-in class after the animation completes
+                setTimeout(() => {
+                    selectors.modalContent.classList.remove('fade-in');
+                }, 500);
+
+                // Update the active tile
+                currentTile.classList.remove('active');
+                newTile.classList.add('active');
+            }, 500);
         }
     }
 
