@@ -1,27 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const selectors = {
+        gridContainer: document.querySelector('.grid-container'),
+        modalOverlay: document.querySelector('.modal__overlay'),
+        modalTitle: document.getElementById('modal-1-title'),
+        modalText: document.querySelector('#modal-1-text'),
+        modalControlPrevious: document.querySelector('.modal__control--prev'),
+        modalControlNext: document.querySelector('.modal__control--next'),
+        modalContent: document.querySelector('.modal__content'),
+    }
+
     const setModalContent = (tile) => {
         const modalTitle = tile.querySelector('h2')?.textContent || 'Lala';
         const modalContent = tile.querySelector('.modal-content') || 'Lorem ipsum dolor sit amet.';
 
-        document.getElementById('modal-1-title').textContent = modalTitle;
-        document.querySelector('#modal-1-text').innerHTML = modalContent.innerHTML;
+        selectors.modalTitle.textContent = modalTitle;
+        selectors.modalText.innerHTML = modalContent.innerHTML;
 
         setModalControls(tile);
     }
 
     const setModalControls = (tile) => {
-        if (!getPreviousTile(tile)) {
-            document.querySelector('.modal__control--prev').classList.add('hidden');
-        } else {
-            document.querySelector('.modal__control--prev').classList.remove('hidden');
-        }
-
-        if (!getNextTile(tile)) {
-            document.querySelector('.modal__control--next').classList.add('hidden');
-        } else {
-            document.querySelector('.modal__control--next').classList.remove('hidden');
-        }
+        selectors.modalControlPrevious.classList.toggle('hidden', getPreviousTile(tile) === null);
+        selectors.modalControlNext.classList.toggle('hidden', getNextTile(tile) === null);
     }
 
     const openModal = (tile) => {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             disableScroll: true,
             openClass: 'visible',
             onClose: () => {
-                tile.classList.remove('active');
+                document.querySelector('.grid-item.active').classList.remove('active');
             }
         }
         MicroModal.show('modal-1', modalOptions);
@@ -74,14 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Prevent tap from being propagated to elements behind the modal
-    document.querySelector('.modal__overlay').addEventListener('touchstart', (e) => {
+    selectors.modalOverlay.addEventListener('touchstart', (e) => {
         if (e.target.hasAttribute('data-micromodal-close')) {
             e.preventDefault();
         }
     }, { passive: false });
 
     // Fill the modal before opening it with the contents of the tile
-    document.querySelector('.grid-container').addEventListener('click', (event) => {
+    selectors.gridContainer.addEventListener('click', (event) => {
         const tile = event.target.closest('.grid-item:has(.modal-content)');
         if (tile) {
             openModal(tile);
@@ -90,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Add event listeners to the controls
-    document.querySelector('.modal__control--prev').addEventListener('click', function() {
+    selectors.modalControlPrevious.addEventListener('click', () => {
         changeModalContent('prev');
     });
 
-    document.querySelector('.modal__control--next').addEventListener('click', function() {
+    selectors.modalControlNext.addEventListener('click', () => {
         changeModalContent('next');
     });
 
