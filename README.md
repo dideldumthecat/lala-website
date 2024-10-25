@@ -4,8 +4,6 @@ The LALA Website is a creative project showcasing a grid-based design with inter
 
 ## Getting Started
 
-Before you begin, make sure to grab the font files required for this project.
-
 ### Fonts
 
 The **Cathedral Open** font files must be obtained separately due to licensing restrictions. Once acquired, place them in the `src/fonts` folder.
