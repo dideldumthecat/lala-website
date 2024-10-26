@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
             disableScroll: true,
             openClass: 'visible',
             onClose: () => {
-                document.querySelector('.grid-item.active').classList.remove('active');
+                document.querySelector('.tile.active').classList.remove('active');
             }
         }
         MicroModal.show('modal-1', modalOptions);
     }
 
     const changeModalContent = (direction) => {
-        const currentTile = document.querySelector('.grid-item.active');
+        const currentTile = document.querySelector('.tile.active');
 
         let newTile;
         if (direction === 'next') {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fill the modal before opening it with the contents of the tile
     selectors.gridContainer.addEventListener('click', (event) => {
-        const tile = event.target.closest('.grid-item:has(.modal-content)');
+        const tile = event.target.closest('.tile:has(.modal-content)');
         if (tile) {
             openModal(tile);
             tile.classList.add('active');

@@ -38,7 +38,7 @@ header {
     max-width: 1000px;
     margin: auto;
 
-    .grid-item {
+    .tile {
         &#power { grid-area: power; @include background-offset(-10px, 10px, -10px, -10px); }
         &#essence { grid-area: essence; @include background-offset(-10px, 10px, -10px, 10px); }
         &#idea { grid-area: idea; @include background-offset(-10px, -10px, -10px, 10px); }
@@ -147,7 +147,7 @@ button {
             "future .";
         max-width: 640px;
 
-        .grid-item {
+        .tile {
             &#power { @include background-offset(-10px, -10px, -10px, 10px); }
             &#idea, &#way { @include background-offset(-10px, 10px, -10px, 10px); }
         }
@@ -170,7 +170,7 @@ button {
             "future";
         max-width: 320px;
 
-        .grid-item {
+        .tile {
             &#power, &#develop, &#story { @include background-offset(10px, -10px, 10px, -10px); }
             &#idea, &#design, &#future { @include background-offset(10px, -10px, 10px, -10px); }
         }
